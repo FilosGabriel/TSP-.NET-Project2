@@ -1,0 +1,14 @@
+C:\Users\filos\source\repos\WCF\HostWCF\bin\Debug\HostWCF.exe.config
+C:\Users\filos\source\repos\WCF\HostWCF\bin\Debug\HostWCF.exe
+C:\Users\filos\source\repos\WCF\HostWCF\bin\Debug\HostWCF.pdb
+C:\Users\filos\source\repos\WCF\HostWCF\bin\Debug\WCF.dll
+C:\Users\filos\source\repos\WCF\HostWCF\bin\Debug\ModelAPI.dll
+C:\Users\filos\source\repos\WCF\HostWCF\bin\Debug\EntityFramework.dll
+C:\Users\filos\source\repos\WCF\HostWCF\bin\Debug\WCF.pdb
+C:\Users\filos\source\repos\WCF\HostWCF\bin\Debug\ModelAPI.pdb
+C:\Users\filos\source\repos\WCF\HostWCF\bin\Debug\ModelAPI.dll.config
+C:\Users\filos\source\repos\WCF\HostWCF\bin\Debug\EntityFramework.xml
+C:\Users\filos\source\repos\WCF\HostWCF\obj\Debug\HostWCF.csprojAssemblyReference.cache
+C:\Users\filos\source\repos\WCF\HostWCF\obj\Debug\HostWCF.csproj.CopyComplete
+C:\Users\filos\source\repos\WCF\HostWCF\obj\Debug\HostWCF.exe
+C:\Users\filos\source\repos\WCF\HostWCF\obj\Debug\HostWCF.pdb

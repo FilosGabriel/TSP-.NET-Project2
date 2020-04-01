@@ -1,0 +1,11 @@
+C:\Users\filos\source\repos\Proiect\ModelAPI\bin\Release\ModelAPI.dll.config
+C:\Users\filos\source\repos\Proiect\ModelAPI\bin\Release\ModelAPI.dll
+C:\Users\filos\source\repos\Proiect\ModelAPI\bin\Release\ModelAPI.pdb
+C:\Users\filos\source\repos\Proiect\ModelAPI\bin\Release\EntityFramework.dll
+C:\Users\filos\source\repos\Proiect\ModelAPI\bin\Release\EntityFramework.SqlServer.dll
+C:\Users\filos\source\repos\Proiect\ModelAPI\bin\Release\EntityFramework.xml
+C:\Users\filos\source\repos\Proiect\ModelAPI\bin\Release\EntityFramework.SqlServer.xml
+C:\Users\filos\source\repos\Proiect\ModelAPI\obj\Release\ModelAPI.csprojAssemblyReference.cache
+C:\Users\filos\source\repos\Proiect\ModelAPI\obj\Release\ModelAPI.csproj.CopyComplete
+C:\Users\filos\source\repos\Proiect\ModelAPI\obj\Release\ModelAPI.dll
+C:\Users\filos\source\repos\Proiect\ModelAPI\obj\Release\ModelAPI.pdb

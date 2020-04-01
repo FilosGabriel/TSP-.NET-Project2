@@ -1,0 +1,90 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="Model" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
+  <EntityContainer Name="ModelContainer" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="MediaSet" EntityType="Model.Media" />
+    <EntitySet Name="TagSet" EntityType="Model.Tag" />
+    <EntitySet Name="EventSet" EntityType="Model.Event" />
+    <EntitySet Name="PlaceSet" EntityType="Model.Place" />
+    <EntitySet Name="PeopleSet" EntityType="Model.People" />
+    <AssociationSet Name="MediaPeople" Association="Model.MediaPeople">
+      <End Role="Media" EntitySet="MediaSet" />
+      <End Role="People" EntitySet="PeopleSet" />
+    </AssociationSet>
+    <AssociationSet Name="MediaPlace" Association="Model.MediaPlace">
+      <End Role="Media" EntitySet="MediaSet" />
+      <End Role="Place" EntitySet="PlaceSet" />
+    </AssociationSet>
+    <AssociationSet Name="MediaTag" Association="Model.MediaTag">
+      <End Role="Media" EntitySet="MediaSet" />
+      <End Role="Tag" EntitySet="TagSet" />
+    </AssociationSet>
+    <AssociationSet Name="MediaEvent" Association="Model.MediaEvent">
+      <End Role="Media" EntitySet="MediaSet" />
+      <End Role="Event" EntitySet="EventSet" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Media">
+    <Key>
+      <PropertyRef Name="MediaId" />
+    </Key>
+    <Property Name="MediaId" Type="Guid" Nullable="false" annotation:StoreGeneratedPattern="None" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="FullPath" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="Format" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="DateOfCreation" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Description" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="Deleted" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="People" Relationship="Model.MediaPeople" FromRole="Media" ToRole="People" />
+    <NavigationProperty Name="Place" Relationship="Model.MediaPlace" FromRole="Media" ToRole="Place" />
+    <NavigationProperty Name="Tag" Relationship="Model.MediaTag" FromRole="Media" ToRole="Tag" />
+    <NavigationProperty Name="Event" Relationship="Model.MediaEvent" FromRole="Media" ToRole="Event" />
+  </EntityType>
+  <EntityType Name="Tag">
+    <Key>
+      <PropertyRef Name="TagId" />
+    </Key>
+    <Property Name="TagId" Type="Guid" Nullable="false" annotation:StoreGeneratedPattern="None" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <NavigationProperty Name="Media" Relationship="Model.MediaTag" FromRole="Tag" ToRole="Media" />
+  </EntityType>
+  <EntityType Name="Event">
+    <Key>
+      <PropertyRef Name="EventId" />
+    </Key>
+    <Property Name="EventId" Type="Guid" Nullable="false" annotation:StoreGeneratedPattern="None" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <NavigationProperty Name="Media" Relationship="Model.MediaEvent" FromRole="Event" ToRole="Media" />
+  </EntityType>
+  <EntityType Name="Place">
+    <Key>
+      <PropertyRef Name="PlaceId" />
+    </Key>
+    <Property Name="PlaceId" Type="Guid" Nullable="false" annotation:StoreGeneratedPattern="None" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <NavigationProperty Name="Media" Relationship="Model.MediaPlace" FromRole="Place" ToRole="Media" />
+  </EntityType>
+  <EntityType Name="People">
+    <Key>
+      <PropertyRef Name="PeopleId" />
+    </Key>
+    <Property Name="PeopleId" Type="Guid" Nullable="false" annotation:StoreGeneratedPattern="None" />
+    <NavigationProperty Name="Media" Relationship="Model.MediaPeople" FromRole="People" ToRole="Media" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+  </EntityType>
+  <Association Name="MediaPeople">
+    <End Type="Model.Media" Role="Media" Multiplicity="*" />
+    <End Type="Model.People" Role="People" Multiplicity="*" />
+  </Association>
+  <Association Name="MediaPlace">
+    <End Type="Model.Media" Role="Media" Multiplicity="1" />
+    <End Type="Model.Place" Role="Place" Multiplicity="*" />
+  </Association>
+  <Association Name="MediaTag">
+    <End Type="Model.Media" Role="Media" Multiplicity="1" />
+    <End Type="Model.Tag" Role="Tag" Multiplicity="*" />
+  </Association>
+  <Association Name="MediaEvent">
+    <End Type="Model.Media" Role="Media" Multiplicity="1" />
+    <End Type="Model.Event" Role="Event" Multiplicity="*" />
+  </Association>
+</Schema>

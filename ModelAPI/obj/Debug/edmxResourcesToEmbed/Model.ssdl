@@ -1,0 +1,142 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl" Alias="Self" Namespace="Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012">
+  <EntityType Name="EventSet">
+    <Key>
+      <PropertyRef Name="EventId" />
+    </Key>
+    <Property Name="EventId" Nullable="false" Type="uniqueidentifier" />
+    <Property Name="Name" Nullable="false" Type="nvarchar(max)" />
+    <Property Name="Media_MediaId" Nullable="false" Type="uniqueidentifier" />
+  </EntityType>
+  <EntityType Name="MediaPeople">
+    <Key>
+      <PropertyRef Name="Media_MediaId" />
+      <PropertyRef Name="People_PeopleId" />
+    </Key>
+    <Property Name="Media_MediaId" Nullable="false" Type="uniqueidentifier" />
+    <Property Name="People_PeopleId" Nullable="false" Type="uniqueidentifier" />
+  </EntityType>
+  <EntityType Name="MediaSet">
+    <Key>
+      <PropertyRef Name="MediaId" />
+    </Key>
+    <Property Name="MediaId" Nullable="false" Type="uniqueidentifier" />
+    <Property Name="Name" Nullable="false" Type="nvarchar(max)" />
+    <Property Name="FullPath" Nullable="false" Type="nvarchar(max)" />
+    <Property Name="Format" Nullable="false" Type="nvarchar(max)" />
+    <Property Name="DateOfCreation" Nullable="false" Type="datetime" />
+    <Property Name="Description" Nullable="false" Type="nvarchar(max)" />
+    <Property Name="Deleted" Nullable="false" Type="bit" />
+  </EntityType>
+  <EntityType Name="PeopleSet">
+    <Key>
+      <PropertyRef Name="PeopleId" />
+    </Key>
+    <Property Name="PeopleId" Nullable="false" Type="uniqueidentifier" />
+    <Property Name="Name" Nullable="false" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="PlaceSet">
+    <Key>
+      <PropertyRef Name="PlaceId" />
+    </Key>
+    <Property Name="PlaceId" Nullable="false" Type="uniqueidentifier" />
+    <Property Name="Name" Nullable="false" Type="nvarchar(max)" />
+    <Property Name="Media_MediaId" Nullable="false" Type="uniqueidentifier" />
+  </EntityType>
+  <EntityType Name="TagSet">
+    <Key>
+      <PropertyRef Name="TagId" />
+    </Key>
+    <Property Name="TagId" Nullable="false" Type="uniqueidentifier" />
+    <Property Name="Name" Nullable="false" Type="nvarchar(max)" />
+    <Property Name="Media_MediaId" Nullable="false" Type="uniqueidentifier" />
+  </EntityType>
+  <Association Name="FK_MediaEvent">
+    <End Type="Self.MediaSet" Multiplicity="1" Role="MediaSet" />
+    <End Type="Self.EventSet" Multiplicity="*" Role="EventSet" />
+    <ReferentialConstraint>
+      <Principal Role="MediaSet">
+        <PropertyRef Name="MediaId" />
+      </Principal>
+      <Dependent Role="EventSet">
+        <PropertyRef Name="Media_MediaId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MediaPeople_Media">
+    <End Type="Self.MediaSet" Multiplicity="1" Role="MediaSet" />
+    <End Type="Self.MediaPeople" Multiplicity="*" Role="MediaPeople" />
+    <ReferentialConstraint>
+      <Principal Role="MediaSet">
+        <PropertyRef Name="MediaId" />
+      </Principal>
+      <Dependent Role="MediaPeople">
+        <PropertyRef Name="Media_MediaId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MediaPeople_People">
+    <End Type="Self.PeopleSet" Multiplicity="1" Role="PeopleSet" />
+    <End Type="Self.MediaPeople" Multiplicity="*" Role="MediaPeople" />
+    <ReferentialConstraint>
+      <Principal Role="PeopleSet">
+        <PropertyRef Name="PeopleId" />
+      </Principal>
+      <Dependent Role="MediaPeople">
+        <PropertyRef Name="People_PeopleId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MediaPlace">
+    <End Type="Self.MediaSet" Multiplicity="1" Role="MediaSet" />
+    <End Type="Self.PlaceSet" Multiplicity="*" Role="PlaceSet" />
+    <ReferentialConstraint>
+      <Principal Role="MediaSet">
+        <PropertyRef Name="MediaId" />
+      </Principal>
+      <Dependent Role="PlaceSet">
+        <PropertyRef Name="Media_MediaId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MediaTag">
+    <End Type="Self.MediaSet" Multiplicity="1" Role="MediaSet" />
+    <End Type="Self.TagSet" Multiplicity="*" Role="TagSet" />
+    <ReferentialConstraint>
+      <Principal Role="MediaSet">
+        <PropertyRef Name="MediaId" />
+      </Principal>
+      <Dependent Role="TagSet">
+        <PropertyRef Name="Media_MediaId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="ModelStoreContainer">
+    <EntitySet Name="EventSet" EntityType="Self.EventSet" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="MediaPeople" EntityType="Self.MediaPeople" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="MediaSet" EntityType="Self.MediaSet" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PeopleSet" EntityType="Self.PeopleSet" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PlaceSet" EntityType="Self.PlaceSet" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TagSet" EntityType="Self.TagSet" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_MediaEvent" Association="Self.FK_MediaEvent">
+      <End EntitySet="MediaSet" Role="MediaSet" />
+      <End EntitySet="EventSet" Role="EventSet" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MediaPeople_Media" Association="Self.FK_MediaPeople_Media">
+      <End EntitySet="MediaSet" Role="MediaSet" />
+      <End EntitySet="MediaPeople" Role="MediaPeople" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MediaPeople_People" Association="Self.FK_MediaPeople_People">
+      <End EntitySet="PeopleSet" Role="PeopleSet" />
+      <End EntitySet="MediaPeople" Role="MediaPeople" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MediaPlace" Association="Self.FK_MediaPlace">
+      <End EntitySet="MediaSet" Role="MediaSet" />
+      <End EntitySet="PlaceSet" Role="PlaceSet" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MediaTag" Association="Self.FK_MediaTag">
+      <End EntitySet="MediaSet" Role="MediaSet" />
+      <End EntitySet="TagSet" Role="TagSet" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

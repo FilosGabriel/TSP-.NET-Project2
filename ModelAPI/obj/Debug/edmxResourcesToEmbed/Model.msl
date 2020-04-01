@@ -1,0 +1,82 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ModelStoreContainer" CdmEntityContainer="ModelContainer">
+    <EntitySetMapping Name="MediaSet">
+      <EntityTypeMapping TypeName="IsTypeOf(Model.Media)">
+        <MappingFragment StoreEntitySet="MediaSet">
+          <ScalarProperty Name="MediaId" ColumnName="MediaId" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="FullPath" ColumnName="FullPath" />
+          <ScalarProperty Name="Format" ColumnName="Format" />
+          <ScalarProperty Name="DateOfCreation" ColumnName="DateOfCreation" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TagSet">
+      <EntityTypeMapping TypeName="IsTypeOf(Model.Tag)">
+        <MappingFragment StoreEntitySet="TagSet">
+          <ScalarProperty Name="TagId" ColumnName="TagId" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EventSet">
+      <EntityTypeMapping TypeName="IsTypeOf(Model.Event)">
+        <MappingFragment StoreEntitySet="EventSet">
+          <ScalarProperty Name="EventId" ColumnName="EventId" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PlaceSet">
+      <EntityTypeMapping TypeName="IsTypeOf(Model.Place)">
+        <MappingFragment StoreEntitySet="PlaceSet">
+          <ScalarProperty Name="PlaceId" ColumnName="PlaceId" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PeopleSet">
+      <EntityTypeMapping TypeName="IsTypeOf(Model.People)">
+        <MappingFragment StoreEntitySet="PeopleSet">
+          <ScalarProperty Name="PeopleId" ColumnName="PeopleId" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="MediaPeople" TypeName="Model.MediaPeople" StoreEntitySet="MediaPeople">
+      <EndProperty Name="Media">
+        <ScalarProperty Name="MediaId" ColumnName="Media_MediaId" />
+      </EndProperty>
+      <EndProperty Name="People">
+        <ScalarProperty Name="PeopleId" ColumnName="People_PeopleId" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="MediaPlace" TypeName="Model.MediaPlace" StoreEntitySet="PlaceSet">
+      <EndProperty Name="Media">
+        <ScalarProperty Name="MediaId" ColumnName="Media_MediaId" />
+      </EndProperty>
+      <EndProperty Name="Place">
+        <ScalarProperty Name="PlaceId" ColumnName="PlaceId" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="MediaTag" TypeName="Model.MediaTag" StoreEntitySet="TagSet">
+      <EndProperty Name="Media">
+        <ScalarProperty Name="MediaId" ColumnName="Media_MediaId" />
+      </EndProperty>
+      <EndProperty Name="Tag">
+        <ScalarProperty Name="TagId" ColumnName="TagId" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="MediaEvent" TypeName="Model.MediaEvent" StoreEntitySet="EventSet">
+      <EndProperty Name="Media">
+        <ScalarProperty Name="MediaId" ColumnName="Media_MediaId" />
+      </EndProperty>
+      <EndProperty Name="Event">
+        <ScalarProperty Name="EventId" ColumnName="EventId" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping>
