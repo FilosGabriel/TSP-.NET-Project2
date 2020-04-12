@@ -1,3 +1,12 @@
-# TSP-.NET-Project2
+ TSP-.NET-Project2
+-------------------
 
-[Client](Client/_NET_UI.pdf)
+
+[Document client](Client/_NET_UI.pdf)
+
+[Document API](API/DatabaseAndApi.pdf)
+
+[Document Model](Model/DatabaseAndApi.pdf)
+
+[Document ObjectWCF](Model/WCF.pdf)
+
